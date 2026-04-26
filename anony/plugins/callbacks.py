@@ -176,3 +176,18 @@ async def _settings_cb(_, query: types.CallbackQuery):
             chat_id,
         )
     )
+
+@app.on_callback_query(filters.regex("^close$") & ~app.bl_users)
+@lang.language()
+@can_manage_vc
+async def _close(_, query: types.CallbackQuery):
+    """Handler for close button that deletes the message."""
+    try:
+        await query.answer()
+        await query.message.delete()
+    except (MessageDeleteForbidden, MessageIdInvalid):
+        await query.answer("Failed to delete message", show_alert=True)
+    except Exception as e:
+        # Log unexpected errors for debugging
+        logger.error(f"Unexpected error deleting message in close callback: {e}")
+        await query.answer("An error occurred", show_alert=True)
