@@ -132,6 +132,7 @@
     "close": "关闭",
     "forward": "向前",
     "help": "帮助",
+    "user_id": "👤 所有者",
     "language": "语言",
     "paused": "流已暂停",
     "cmd_delete": "删除指令",
