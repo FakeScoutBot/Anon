@@ -77,7 +77,7 @@ class Inline:
             self.ikb(
                 text=f"{name} ({code}) {'✔️' if code == _lang else ''}",
                 callback_data=f"lang_change {code}",
-                style=ButtonStyle.SUCCESS if code == _lang else ButtonStyle.DEFAULT
+                style=ButtonStyle.PRIMARY if code == _lang else ButtonStyle.DEFAULT
             )
             for code, name in langs.items()
         ]
