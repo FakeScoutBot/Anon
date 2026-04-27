@@ -132,6 +132,7 @@
     "close": "閉じる",
     "forward": "前方へ",
     "help": "ヘルプ",
+    "user_id": "👤 オーナー",
     "language": "言語",
     "paused": "ストリームが一時停止されました",
     "cmd_delete": "コマンドを削除",
