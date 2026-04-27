@@ -4,12 +4,16 @@
 
 
 import re
+import logging
 
 from pyrogram import errors, filters, types
+from pyrogram.errors import MessageDeleteForbidden, MessageIdInvalid
 
 from anony import anon, app, db, lang, queue, tg, yt
 from anony.helpers import admin_check, buttons, can_manage_vc
 
+
+logger = logging.getLogger(__name__)
 
 @app.on_callback_query(filters.regex("cancel_dl") & ~app.bl_users)
 @lang.language()
@@ -179,7 +183,6 @@ async def _settings_cb(_, query: types.CallbackQuery):
 
 @app.on_callback_query(filters.regex("^close$") & ~app.bl_users)
 @lang.language()
-@can_manage_vc
 async def _close(_, query: types.CallbackQuery):
     """Handler for close button that deletes the message."""
     try:
@@ -188,6 +191,5 @@ async def _close(_, query: types.CallbackQuery):
     except (MessageDeleteForbidden, MessageIdInvalid):
         await query.answer("Failed to delete message", show_alert=True)
     except Exception as e:
-        # Log unexpected errors for debugging
-        logger.error(f"Unexpected error deleting message in close callback: {e}")
+        logger.error(f"Unexpected error in close callback: {e}")
         await query.answer("An error occurred", show_alert=True)
