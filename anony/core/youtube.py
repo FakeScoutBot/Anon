@@ -128,6 +128,12 @@ class YouTube:
             "overwrites": False,
             "nocheckcertificate": True,
             "cookiefile": cookie,
+            "retries": 3,
+            "fragment_retries": 5,
+            "skip_unavailable_fragments": True,
+            "concurrent_fragment_downloads": 4,
+            "http_chunk_size": 1048576,  # 1MB
+            "buffer_size": 16384,
         }
 
         if video:
