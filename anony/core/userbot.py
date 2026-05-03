@@ -29,6 +29,11 @@ class Userbot(Client):
                     api_id=config.API_ID,
                     api_hash=config.API_HASH,
                     session_string=session,
+                    device_model="Vivo V2141",
+                    system_version="14 (34)",
+                    app_version="12.6.4 (6666)",
+                    lang_pack="android",
+                    lang_code="en",
                     max_concurrent_transmissions=10,
                 ),
             )
