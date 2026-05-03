@@ -8,6 +8,17 @@ import signal
 import importlib
 from contextlib import suppress
 
+from pyrogram import filters
+
+_original_command = filters.command
+
+def custom_command(commands, **kwargs):
+    if "prefixes" not in kwargs:
+        kwargs["prefixes"] = ["/", "!"]
+    return _original_command(commands, **kwargs)
+
+filters.command = custom_command
+
 from anony import (anon, app, config, db, logger,
                    stop, thumb, userbot, yt)
 from anony.plugins import all_modules
