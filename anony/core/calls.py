@@ -95,6 +95,7 @@ class TgCall(PyTgCalls):
                             media=InputMediaPhoto(
                                 media=_thumb,
                                 caption=text,
+                                has_spoiler=True,
                             ),
                             reply_markup=keyboard,
                         )
@@ -106,6 +107,7 @@ class TgCall(PyTgCalls):
                             chat_id=chat_id,
                             photo=_thumb,
                             caption=text,
+                            has_spoiler=True,
                             reply_markup=keyboard,
                         )
                     else:
